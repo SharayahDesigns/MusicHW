@@ -7,7 +7,9 @@ class List extends React.Component{
     this.state = {
       music: [
         {artist: "Justin Timberlake" , price: 2.99},
-        {artist: "Dua Lipa", price: 8.99}
+        {artist: "Dua Lipa",price: 8.99},
+        {artist: "Brittany Spears", price: 24.00}
+        
       ],
       showForm: true
     };
@@ -26,13 +28,13 @@ class List extends React.Component{
   }
   
   renderMusic = () => {
-    return this.state.music.map((m) => {
+    return this.state.music.map((m, index) => {
       return (
-        <div className="border">
+        <div className="box2" key={index}>
           <h1>{m.song}</h1>
           <h1>{m.artist}</h1>
           <h1>{m.price}</h1>
-          <button onClick={()=>this.deleteMusic(m.artist)} >Delete</button>
+          <button className="delete" onClick={()=>this.deleteMusic(m.artist)} ><span>Delete</span> <div className="liquid" ></div></button>
         </div>
 )
     })
@@ -50,7 +52,7 @@ class List extends React.Component{
     return (
       <div className="border" >
           <div>
-             <button onClick={this.toggleForm}>
+             <button className="form" onClick={this.toggleForm}>
               <span>{this.state.showForm ? 'Hide Artist Form' : 'Create an artist'}</span>
               <div className="liquid" ></div>
             </button>

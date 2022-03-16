@@ -47,7 +47,7 @@ class MuiscForm extends React.Component{
     return (
 
       <div className="box" >
-        <form onSubmit={this.handleSubmit}>
+        <form className="box1" onSubmit={this.handleSubmit}>
           <h1>Music Form</h1>
           <h3>Artist:</h3>
           <input name='artist' value={this.state.artist} onChange={this.handleChange}/>
@@ -57,7 +57,7 @@ class MuiscForm extends React.Component{
           <input name="price" value={this.state.price} onChange={this.handleChange} />
           <br />
           <br/>
-          <button  ><span>add</span><div className="liquid"></div> </button>
+          <button className="add" ><span>add</span><div className="liquid"></div> </button>
         </form>
        </div>
 )
