@@ -1,18 +1,60 @@
 import React from "react";
-import List from "./List";
+
 class MuiscForm extends React.Component{
-  render() {
+  constructor(props) {
+    super(props)
+    this.state={
+      artist:'',
+      song: '',
+      price:'',
+    }
+  }
+  
+  handleChange=(e)=>{
+    // console.log('value', e.target.value)
+    console.log('name', e.target.name)
+    
+    this.setState({
+      //the target.name is referred to the name= on line 52
+    [e.target.name]:e.target.value
+    
+    })
+    // console.log(e.target.value)
+    // if(e.target.artist === 'artist') {
+    //   this.setState({
+    //   artist:e.target.value
+    //   })
+    // }
+    // if(e.target.song === 'song') {
+    //   this.setState({
+    //   song:e.target.value
+    //   })
+    // }
+    // if(e.target.price ==='price') {
+    //   this.setState({
+    //   price:e.target.value
+    //   })
+    // }
+    
+  }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('handleSubmit',this.state)
+    this.props.addMusic(this.state)
+  }
+  
+  render() {  
     return (
 
       <div className="box" >
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <h1>Music Form</h1>
           <h3>Artist:</h3>
-          <input />
+          <input name='artist' value={this.state.artist} onChange={this.handleChange}/>
           <h3>Song:</h3>
-          <input/>
+          <input name="song" value={this.state.song} onChange={this.handleChange} />
           <h3>price:</h3>
-          <input />
+          <input name="price" value={this.state.price} onChange={this.handleChange} />
           <br />
           <br/>
           <button  ><span>add</span><div className="liquid"></div> </button>
